@@ -1,0 +1,62 @@
+this is my hackmud notes
+
+kernel.hardline{dc:true}
+scripts.fullsec {sector:"DATA_LAMBDA_5"}
+
+nav_keywords
+{
+	nav
+	see
+	open
+	process
+}
+
+directory
+{
+	dir
+	personnel
+}
+
+passwords_keyword
+{
+	p
+	pass
+	passwords
+}
+
+passwords
+{
+	bethebest
+	plantowin
+	thenumberone
+	endtheworld
+	knowyourteam
+}
+
+project_name
+{
+	W3rlD3NDER
+	ESCHATOLOGI.EXE
+	omegabyte_03
+	qw_stop
+	Ap_calypse
+	BL4Z1NGW0RLD
+	giant_spidr
+	H0meEntert4inment
+	thefloood
+	Vy_for_russ
+	tmp
+}
+
+command:"personnel"
+{nav:"",pass:"",project:""}
+command:""
+
+
+
+anon_jr_74ntoe.public_rsb8wn{}
+anon_jr_d6ef3w.pubinfo_t2u3zz{}
+anonymous_jrstg_b6n8pc.extern_79m19r{}
+
+k1mpp4.breaker
+k1mpp4.scraper
