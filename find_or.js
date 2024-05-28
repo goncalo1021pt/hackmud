@@ -17,7 +17,10 @@ function(context, args)  // target:#s.script.name
 		{
 			l = args.target.call({[cmd_var]: cmd, [pass_key[i]]: pass, project: projects[j]});
 			if (Array.isArray(l))
+			{
+				#D(out);	
 				out = out.concat(l);
+			}
 		}
 		return out;
 	}
