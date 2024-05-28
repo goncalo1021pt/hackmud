@@ -1,5 +1,6 @@
 l0cket
 EZ_40
 undefined
-c001
-c002
+c001 color + color_len
+c002 color + complement
+c003 color + 2 colors
