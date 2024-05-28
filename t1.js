@@ -72,5 +72,6 @@ function(context, args) // t:#s.script.name
 			return {ok:false, msg:arg1}; 
 		functions[lock]();
 	} while (last_word !== "terminated.");
+	var a = #ns.sys.access_log({})
 	return { ok:true, msg:l};
 }

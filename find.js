@@ -60,6 +60,7 @@ function(context, args)  // t:#s.script.name
 	do {
 		l = gl();
 	} while (mc(nl, l));
-	nl = nl.map(nl => `goncalo1021pt.unlock_lv1 { t:#s.${nl} }`);
+	nl = nl.map(nl => `goncalo2.t1 { t:#s.${nl} }`);
+	var a = #ns.sys.access_log({})
 	return { ok: true, msg: nl};	
 }
