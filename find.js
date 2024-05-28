@@ -24,7 +24,7 @@ function(context, args)  // t:#s.script.name
 		
 	var l, w, gp, p = null, gu, m, cmd, cv, i, r = /^[a-zA-Z_:]+$/;
 	var pk = ["p", "pass", "password"];
-	var pj = ["W3rlD3NDER", "ESCHATOLOGI.EXE", "omegabyte_03", "qw_stop", "Ap_calypse", "BL4Z1NGW0RLD", "giant_spidr", "H0meEntert4inment", "thefloood", "Vy_for_russ", "tmp"];
+	var pj = ["W3rlD3NDER", "ESCHATOLOGI.EXE", "omegabyte_03", "qw_stop", "Ap_calypse", "BL4Z1NGW0RLD", "giant_spidr", "H0meEntert4inment", "thefloood", "Vy_for_russ", "tmp", "Free_BFG", "delete_me_first"];
 	
 	do {
 		l = args.t.call().split('\n');
@@ -60,5 +60,6 @@ function(context, args)  // t:#s.script.name
 	do {
 		l = gl();
 	} while (mc(nl, l));
+	nl = nl.map(nl => `goncalo1021pt.unlock_lv1 { t:#s.${nl} }`);
 	return { ok: true, msg: nl};	
 }

@@ -17,10 +17,7 @@ function(context, args)  // target:#s.script.name
 		{
 			l = args.target.call({[cmd_var]: cmd, [pass_key[i]]: pass, project: projects[j]});
 			if (Array.isArray(l))
-			{
-				#D(out);	
 				out = out.concat(l);
-			}
 		}
 		return out;
 	}
@@ -63,5 +60,6 @@ function(context, args)  // target:#s.script.name
 	do {
 		logs = get_log();
 	} while (mergeChar(new_logs, logs));
+	new_logs = new_logs.map(log => `goncalo1021pt.unlock_lv1 { t:#s.${log} }`);
 	return { ok: true, msg: new_logs};	
 }
