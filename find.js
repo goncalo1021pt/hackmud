@@ -1,64 +1,64 @@
-function(context, args)  // target:#s.script.name
+function(context, args)  // t:#s.script.name
 {
-	function mergeChar(oldArr, newArr) {
-		var flag = false;
-		for (var i = 0; i < oldArr.length; i++) {
-			if (oldArr[i] && oldArr[i].split('').some(char => !/^[a-zA-Z0-9_.<>]$/.test(char)) && oldArr[i] !== null) {
-				oldArr[i] = newArr[i];
-				flag = true;
+	function mc(oa, na) {
+		var f = false;
+		for (var i = 0; i < oa.length; i++) {
+			if (oa[i] && oa[i].split('').some(char => !/^[a-zA-Z0-9_.<>]$/.test(char)) && oa[i] !== null) {
+				oa[i] = na[i];
+				f = true;
 			}
 		}
-		return flag;
+		return f;
 	}
-	function get_log()
+	function gl()
 	{
-		var out = [];
-		for (var j = 0; j < projects.length; j++)
+		var o = [];
+		for (var j = 0; j < pj.length; j++)
 		{
-			l = args.target.call({[cmd_var]: cmd, [pass_key[i]]: pass, project: projects[j]});
+			l = args.t.call({[cv]: cmd, [pk[i]]: p, project: pj[j]});
 			if (Array.isArray(l))
-				out = out.concat(l);
+				o = o.concat(l);
 		}
-		return out;
+		return o;
 	}
 		
-	var l, words, get_pass, pass = null, get_user, match, cmd, cmd_var, i, regex = /^[a-zA-Z_:]+$/;
-	var pass_key = ["p", "pass", "password"];
-	var projects = ["W3rlD3NDER", "ESCHATOLOGI.EXE", "omegabyte_03", "qw_stop", "Ap_calypse", "BL4Z1NGW0RLD", "giant_spidr", "H0meEntert4inment", "thefloood", "Vy_for_russ", "tmp"];
+	var l, w, gp, p = null, gu, m, cmd, cv, i, r = /^[a-zA-Z_:]+$/;
+	var pk = ["p", "pass", "password"];
+	var pj = ["W3rlD3NDER", "ESCHATOLOGI.EXE", "omegabyte_03", "qw_stop", "Ap_calypse", "BL4Z1NGW0RLD", "giant_spidr", "H0meEntert4inment", "thefloood", "Vy_for_russ", "tmp"];
 	
 	do {
-		l = args.target.call().split('\n');
-		words = l[l.length - 1].split(' | ');
-		get_user = words[0];
-		get_pass = words[1];
-	} while (!regex.test(get_pass) || !regex.test(get_user));
+		l = args.t.call().split('\n');
+		w = l[l.length - 1].split(' | ');
+		gu = w[0];
+		gp = w[1];
+	} while (!r.test(gp) || !r.test(gu));
 
 	do {
-		l = args.target.call({})
-		match = l.match(/(\w+):"([^"]*)"/);
-		cmd_var = match[1];
-		cmd = match[2];
-	} while (!regex.test(cmd) || !regex.test(cmd_var));
+		l = args.t.call({})
+		m = l.match(/(\w+):"([^"]*)"/);
+		cv = m[1];
+		cmd = m[2];
+	} while (!r.test(cmd) || !r.test(cv));
 
 	do {
-		l = args.target.call({[cmd_var]: get_pass});
-		match = l.match(/strategy (\S+)/);
-		if (!match)
+		l = args.t.call({[cv]: gp});
+		m = l.match(/strategy (\S+)/);
+		if (!m)
 			continue;
-		pass = match[1];
-	} while (!regex.test(pass) || pass === null);
+		p = m[1];
+	} while (!r.test(p) || p === null);
 
 	for (i = 0; i < 3; i++)
 	{
-		l = args.target.call({[cmd_var]: cmd, [pass_key[i]]: pass});
+		l = args.t.call({[cv]: cmd, [pk[i]]: p});
 		if (l.charAt(0) === 'A')
 			break;
 	}
 
-	var logs = [];
-	var new_logs = get_log();
+	var l = [];
+	var nl = gl();
 	do {
-		logs = get_log();
-	} while (mergeChar(new_logs, logs));
-	return { ok: true, msg: new_logs};	
+		l = gl();
+	} while (mc(nl, l));
+	return { ok: true, msg: nl};	
 }
