@@ -65,7 +65,11 @@ function(context, args) // t:#s.script.name
 	var arg1 = {};
 	var last_word;
 	do {
-		var l = args.t.call(arg1).split(' ');
+		var l = args.t.call(arg1);
+		if (!l.includes("lock."))
+			return {ok:false, msg:l};
+		l = l.split('\n');
+		
 		var index = l.lastIndexOf('lock.') - 1;
 		var lock = l[index].replace(/`|N/g, '');
 		if (!functions.hasOwnProperty(lock))
