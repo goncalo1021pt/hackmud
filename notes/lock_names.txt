@@ -6,15 +6,25 @@ c002 color + complement
 c003 color + 2 colors
 
 sn_w_glock {
-	That balance would not be chosen by a magician.
-	Not a monolithic balance.
-	Seems like your balance could be more secure.
-	That's not a balance of the beast.
-	Not an elite balance at all.
-	That balance was not secret.
-	Not a hunter's balance indeed.
-	Well that wasn't a special balance.
-	That balance has no meaning.
+	hunter's
+	secret.
+	secure.
+	meaning
+	beast
+	special
+	magician
+	elite
+	monolithic
+	
+	3006
+	7
+	443
+	42
+	666
+	38
+	1089
+	1337
+	2001
 }
 
 acct_nt {
