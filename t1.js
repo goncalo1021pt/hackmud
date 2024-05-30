@@ -43,24 +43,32 @@ function(context, args) // t:#s.script.name
 			l = args.t.call(arg1);
 		},
 		"magnara": function() {
-			function pm(s) {
-				if (s.length === 1) return [s];
-				const p = [];
-				for (let i = 0; i < s.length; i++) {
-					let rest = s.slice(0, i) + s.slice(i + 1);
-					for (let p of pm(rest)) {
-						p.push(s[i] + p);
-					}
-				}
-				return p;
-			}
 			arg1.magnara = "";
-			let l = #ns.beta.lock_sim(arg1).split(" ");
-			#D(l);
-			for (let c of pm(l)) {
-				arg1.magnara = c;
-				l = #ns.beta.lock_sim(arg1).split(" ")[0];
-				if (l !== "recinroct") break;
+			l = #ns.beta.lock_sim(arg1).split(" ");
+			function gc(s){
+				var r = [];
+				if (s.length === 1) {
+					return [s];
+				} else {
+					var a = gc(s.slice(1));
+					for (var i = 0; i < a.length; i++) {
+						for (var j = 0; j < s.length; j++) {
+							var p = a[i].slice(0, j) + s[0] + a[i].slice(j);
+							if (r.indexOf(p) === -1)
+								r.push(p);
+						}
+					}
+					return r;
+				}
+			}
+			l = l[l.length-1];
+			var c = gc(l);
+			for (var i = 0; i < c.length; i++) {
+				arg1.magnara = c[i];
+				l = #ns.beta.lock_sim(arg1).split(" ");
+				l = l[0]; 
+				if (l !== "recinroct")
+					break;
 			}
 		},
 		"DATA_CHECK": function() {
@@ -101,15 +109,15 @@ function(context, args) // t:#s.script.name
 	var ez = ["open","release","unlock"];
 	var arg1 = {};
 	var last_word;
-	// if (context.caller !== "goncalo1021pt")
-	// 	return {ok:false};
+	if (context.caller !== "goncalo1021pt")
+		return {ok:false};
 	do {
 		var l = args.t.call(arg1);
 		if (typeof l !== "string" || !l.includes("lock."))
 		{
 			if (typeof l !== "string")
 				return {ok:false, msg:l.msg};
-			return {ok:false, msg:l};
+			return {ok:true, msg:l};
 		}
 		l = l.split(' ');
 		var index = l.lastIndexOf('lock.') - 1;
