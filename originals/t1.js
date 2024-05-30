@@ -65,12 +65,20 @@ function(context, args) // t:#s.script.name
 	var arg1 = {};
 	var last_word;
 	do {
-		var l = args.t.call(arg1).split(' ');
+		var l = args.t.call(arg1);
+		if (typeof l !== "string" || !l.includes("lock."))
+		{
+			if (typeof l !== "string")
+				return {ok:false, msg:l.msg};
+			return {ok:false, msg:l};
+		}
+		l = l.split(' ');
 		var index = l.lastIndexOf('lock.') - 1;
 		var lock = l[index].replace(/`|N/g, '');
 		if (!functions.hasOwnProperty(lock))
 			return {ok:false, msg:arg1}; 
 		functions[lock]();
 	} while (last_word !== "terminated.");
+	var a = #ns.sys.access_log({})
 	return { ok:true, msg:l};
 }
