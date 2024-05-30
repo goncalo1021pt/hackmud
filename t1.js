@@ -68,8 +68,7 @@ function(context, args) // t:#s.script.name
 		var l = args.t.call(arg1);
 		if (!l.includes("lock."))
 			return {ok:false, msg:l};
-		l = l.split('\n');
-		
+		l = l.split(' ');
 		var index = l.lastIndexOf('lock.') - 1;
 		var lock = l[index].replace(/`|N/g, '');
 		if (!functions.hasOwnProperty(lock))
