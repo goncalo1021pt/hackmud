@@ -6,25 +6,25 @@ c002 color + complement
 c003 color + 2 colors
 
 sn_w_glock {
-	hunter's
-	secret.
-	secure.
-	meaning
-	beast
-	special
-	magician
-	elite
-	monolithic
+	"hunter's",
+	"secret.",
+	"secure.",
+	"meaning",
+	"beast",
+	"special",
+	"magician",
+	"elite",
+	"monolithic"
 	
-	3006
-	7
-	443
-	42
-	666
-	38
-	1089
-	1337
-	2001
+	3006,
+	7,
+	443,
+	42,
+	666,
+	38,
+	1089,
+	1337,
+	2001,
 }
 
 acct_nt {

@@ -28,6 +28,19 @@ function(context, args) // t:#s.script.name
 		"l0cket": function() {
 			solver("l0cket", lokt, 'k');
 		},
+		"sn_w_glock": function() {
+			arg1.sn_w_glock = "";
+			l = args.t.call(arg1);
+			var i = 0;
+			for (;i < sn_q.length; i++) {
+				if (l.includes(sn_q[i])) {
+					arg1.sn_w_glock = sn_a[i];
+					break;
+				}
+			}
+			#fs.accts.xfer_gc_to_caller({amount:sn_a[i]});
+			l = args.t.call(arg1);
+		},
 		"DATA_CHECK": function() {
 			arg1.DATA_CHECK = "";
 			l = args.t.call(arg1);
@@ -60,10 +73,14 @@ function(context, args) // t:#s.script.name
 	var lokt = ["4jitu5", "5c7e1r", "6hh8xw", "9p65cu", "cmppiq", "ellux0", "hc3b69", "i874y3", "lq09tg", "nfijix", "pmvr1q", "sa23uw", "tvfkyq", "uphlaw", "vc2c7q", "vthf6e", "xwz7ja"];
 	var data_check_q = ["kno", "hou", "dir", "iss", "ie'", "ry's", "dis", "nco", "vis", "wer", "pes", "saf", "atm", "fac", "emp", "pres", "th3", "via s", "gc", "gat", "dia", "eak", "anj", "ski", "exp", "bul", "arc", "ond", "ata", "gra", "ores", "idk", "ol'", "nam", "asc", "urt", "'re", "qr", ":o", "dro", "t-", "mC", "blu", "st fu", "kil", "gna"];
 	var data_check_a = ["fran_lee", "robovac", "sentience", "sans_comedy", "angels", "minions", "sisters", "petra", "fountain", "helpdesk", "bunnybat", "get_level", "weathernet", "eve", "resource", "bo", "heard", "teach", "outta_juice", "poetry", "diagalpha", "crowsnest", "blazer", "dead", "engaged", "a2231", "obsessive", "atlanta", "skimmerite", "piano", "idp1p1", "well", "nubloopstone", "sheriff", "nowhere", "executives", "thirteen", "bnnyhunter", "unvarnishedpygmyumbrella", "goodfellow", "lime", "mallory", "hammer", "index", "making", "110652"];
+	var sn_q = ["hunter's","secret.","secure.","meaning","beast","special","magician","elite","monolithic"];
+	var sn_a = [3006,7,443,42,666,38,1089,1337,2001];
 	var prime = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];
 	var ez = ["open","release","unlock"];
 	var arg1 = {};
 	var last_word;
+	if (context.caller !== "goncalo1021pt")
+		return {ok:false};
 	do {
 		var l = args.t.call(arg1);
 		if (typeof l !== "string" || !l.includes("lock."))
@@ -75,7 +92,7 @@ function(context, args) // t:#s.script.name
 		l = l.split(' ');
 		var index = l.lastIndexOf('lock.') - 1;
 		var lock = l[index].replace(/`|N/g, '');
-		if (!functions.hasOwnProperty(lock))
+		if (!functions.hasOwnProperty(lock))cl
 			return {ok:false, msg:arg1}; 
 		functions[lock]();
 	} while (last_word !== "terminated.");
