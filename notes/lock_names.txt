@@ -4,3 +4,27 @@ acct_nt
 c001 color + color_len
 c002 color + complement
 c003 color + 2 colors
+
+sn_w_glock {
+	That balance would not be chosen by a magician.
+	Not a monolithic balance.
+	Seems like your balance could be more secure.
+	That's not a balance of the beast.
+	Not an elite balance at all.
+	That balance was not secret.
+	Not a hunter's balance indeed.
+	Well that wasn't a special balance.
+	That balance has no meaning.
+}
+
+acct_nt {
+
+}
+
+CON_SPEC {
+
+}
+
+magnara {
+	recinroct magnara ulotnois orf: nksu
+}

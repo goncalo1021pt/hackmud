@@ -66,8 +66,12 @@ function(context, args) // t:#s.script.name
 	var last_word;
 	do {
 		var l = args.t.call(arg1);
-		if (!l.includes("lock."))
+		if (typeof l !== "string" || !l.includes("lock."))
+		{
+			if (typeof l !== "string")
+				return {ok:false, msg:l.msg};
 			return {ok:false, msg:l};
+		}
 		l = l.split(' ');
 		var index = l.lastIndexOf('lock.') - 1;
 		var lock = l[index].replace(/`|N/g, '');

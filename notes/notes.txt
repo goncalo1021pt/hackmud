@@ -60,3 +60,8 @@ anonymous_jrstg_b6n8pc.extern_79m19r{}
 
 k1mpp4.breaker
 k1mpp4.scraper
+
+t2_username
+{
+	poitier_27
+}
