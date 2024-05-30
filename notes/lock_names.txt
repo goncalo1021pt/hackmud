@@ -38,3 +38,5 @@ CON_SPEC {
 magnara {
 	recinroct magnara ulotnois orf: nksu
 }
+
+recinroct

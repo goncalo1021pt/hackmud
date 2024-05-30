@@ -1,32 +1,33 @@
 function(context, args) // t:#s.script.name
 {
+	// #D is a debug function like console.log
 	var functions = {
 		"EZ_21": function() {
-			solver("ez_21", ez, 'k');
+			solver("ez_21", ez);
 		},
 		"EZ_35": function() {
-			solver("ez_35", ez, 'g');
-			solver("digit", Array.from({length: 10}, (_, i) => i), 'k');
+			solver("ez_35", ez);
+			solver("digit", Array.from({length: 10}, (_, i) => i));
 		},
 		"EZ_40": function() { 
-			solver("ez_40", ez, 'g');
-			solver("ez_prime", prime, 'k');
-			},
+			solver("ez_40", ez);
+			solver("ez_prime", prime);
+		},
 		"c001": function() {
-			solver("c001", color, 'g');
-			solver("color_digit", Array.from({length: 10}, (_, i) => i), 'k');
+			solver("c001", color);
+			solver("color_digit", Array.from({length: 10}, (_, i) => i));
 		},
 		"c002": function() {
-			solver("c002", color, 'g');
-			solver("c002_complement", color, 'k');
+			solver("c002", color);
+			solver("c002_complement", color);
 		},
 		"c003": function() {
-			solver("c003", color, 'g');
-			solver("c003_triad_1", color, 'g');
-			solver("c003_triad_2", color, 'k');
+			solver("c003", color);
+			solver("c003_triad_1", color);
+			solver("c003_triad_2", color);
 		},
 		"l0cket": function() {
-			solver("l0cket", lokt, 'k');
+			solver("l0cket", lokt);
 		},
 		"sn_w_glock": function() {
 			arg1.sn_w_glock = "";
@@ -40,6 +41,27 @@ function(context, args) // t:#s.script.name
 			}
 			#fs.accts.xfer_gc_to_caller({amount:sn_a[i]});
 			l = args.t.call(arg1);
+		},
+		"magnara": function() {
+			function pm(s) {
+				if (s.length === 1) return [s];
+				const p = [];
+				for (let i = 0; i < s.length; i++) {
+					let rest = s.slice(0, i) + s.slice(i + 1);
+					for (let p of pm(rest)) {
+						p.push(s[i] + p);
+					}
+				}
+				return p;
+			}
+			arg1.magnara = "";
+			let l = #ns.beta.lock_sim(arg1).split(" ");
+			#D(l);
+			for (let c of pm(l)) {
+				arg1.magnara = c;
+				l = #ns.beta.lock_sim(arg1).split(" ")[0];
+				if (l !== "recinroct") break;
+			}
 		},
 		"DATA_CHECK": function() {
 			arg1.DATA_CHECK = "";
@@ -58,13 +80,13 @@ function(context, args) // t:#s.script.name
 			last_word = l.split(' ').pop();
 		}
 	};
-	function solver(lock, lock_arr, endchar)
+	function solver(lock, lock_arr)
 	{
 		for (var i = 0; i < lock_arr.length; i++) {
 			arg1[lock] = lock_arr[i];
 			l = args.t.call(arg1);
 			last_word = l.split(' ').pop();
-			if (l.charAt(l.length-2) === endchar || last_word === "terminated.") {
+			if (last_word === "lock." || last_word ==="missing." || last_word === "terminated.") {
 				break;
 			}
 		}
@@ -79,8 +101,8 @@ function(context, args) // t:#s.script.name
 	var ez = ["open","release","unlock"];
 	var arg1 = {};
 	var last_word;
-	if (context.caller !== "goncalo1021pt")
-		return {ok:false};
+	// if (context.caller !== "goncalo1021pt")
+	// 	return {ok:false};
 	do {
 		var l = args.t.call(arg1);
 		if (typeof l !== "string" || !l.includes("lock."))
@@ -92,7 +114,7 @@ function(context, args) // t:#s.script.name
 		l = l.split(' ');
 		var index = l.lastIndexOf('lock.') - 1;
 		var lock = l[index].replace(/`|N/g, '');
-		if (!functions.hasOwnProperty(lock))cl
+		if (!functions.hasOwnProperty(lock))
 			return {ok:false, msg:arg1}; 
 		functions[lock]();
 	} while (last_word !== "terminated.");
