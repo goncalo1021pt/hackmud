@@ -71,6 +71,10 @@ function(context, args) // t:#s.script.name
 					break;
 			}
 		},
+		"CON_SPEC": function() {
+			arg1.CON_SPEC = "#s.goncalo1021pt.cp";
+			l = args.t.call(arg1);
+		},
 		"DATA_CHECK": function() {
 			arg1.DATA_CHECK = "";
 			l = args.t.call(arg1);

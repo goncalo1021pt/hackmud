@@ -6,5 +6,6 @@ function(context, args)
 		if (args.s[i] === args.d) {
 			count++;
 		}
-	}		
+	}
+	return count;
 }
