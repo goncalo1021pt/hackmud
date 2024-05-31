@@ -7,5 +7,5 @@ function(context, args)
 			count++;
 		}
 	}
-	return count;
+	return ;
 }
